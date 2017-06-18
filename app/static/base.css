@@ -1,0 +1,56 @@
+@font-face {
+ font-family: 'summer_font';
+ src: url('/static/summer.ttf');
+ }
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: summer_font;
+}
+
+.header {
+  text-align:center;
+  background: #292929;
+  padding:0;
+
+}
+.header ul {
+  display: inline-block;
+  list-style: none;
+}
+.header li {
+  float:left;
+  padding:18px;
+  padding-left:40px;
+  transition: all 0.5s ease;
+  font-size: 20px;
+  font-weight:500;
+  color:white;
+}
+.header a {
+  color:white;
+  text-decoration: none;
+}
+.header li:hover{
+  -webkit-animation: pulse 1s;
+  animation: pulse 1s;
+}
+.header img {
+  float:left;
+  width: 90px;
+  height:100px;
+}
+.header img:hover{
+  -webkit-animation: tada 1s;
+  animation: tada 1s;
+}
+
+
+.wrap {
+
+ text-align: center;
+}

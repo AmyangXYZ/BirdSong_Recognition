@@ -1,0 +1,44 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - 小鸟啾啾</title>
+    {% else %}
+    <title>Bird</title>
+    {% endif %}
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='welcome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='animate.min.css') }}">
+
+</head>
+<body>
+<div id="wrapper">
+
+  <div class="header">
+    <ul>
+      <img src="/static/logo.png">
+      <li>
+        <a href="/">首页<br>Home</a>
+      </li>
+      <li>
+        <a href="/identify">识别<br>Identify</a>
+      </li>
+      <li>
+        <a href="/enjoy">欣赏<br>Enjoy</a>
+      </li>
+      <li>
+        <a href="/about">关于<br>About</a>
+      </li>
+    </ul>
+  </div>
+
+  <div id="info">
+    <div id="info-content">
+      <h1><strong>Sweety<br></strong>qiuqiuqiu<br></h1>
+      <p></p>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+</div><!-- #wrapper -->
+</body>
+</html>
