@@ -1,3 +1,5 @@
-# BirdSongs
+BirdSong Recognition
+==== 
 ### A Web Application for Identifying Bird Songs
-### Not Finished yet
+### Basic func completed
+### Requirement: `hmmlearn, librosa`
