@@ -3,13 +3,13 @@ import sys, os
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
 from sigproc import SigProc
-sys.path.append('/srv/flask/qiuqiuqiu/app/')
+sys.path.append('/srv/flask/BirdSong_Recognition/app/')
 
 from train import predict
 
 
-app.config['UPLOAD_FOLDER'] = '/srv/flask/qiuqiuqiu/app/uploads/'
-app.config['WaveForms_FOLDER'] = '/srv/flask/qiuqiuqiu/app/waveforms/'
+app.config['UPLOAD_FOLDER'] = '/srv/flask/BirdSong_Recognition/app/uploads/'
+app.config['WaveForms_FOLDER'] = '/srv/flask/BirdSong_Recognition/app/waveforms/'
 app.secret_key = os.urandom(24)
 
 @app.route('/')
@@ -28,9 +28,8 @@ def about():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
-@app.route('/identify', methods=['GET','POST'])
-def identify():
-
+@app.route('/recognize', methods=['GET','POST'])
+def recognize():
     if request.method == 'POST':    # upload
         file = request.files['file']
         if file :
@@ -41,8 +40,8 @@ def identify():
             img = sig.PlotImg()
             result = unicode(predict(audio_name), "utf-8")
             wav = '<audio src="{}" controls="controls"></audio>'.format(file_url)
-            return render_template('identify.html', title='Identify',**locals())
-    return render_template('identify.html',title='Identify')
+            return render_template('recognize.html', title='Recognize',**locals())
+    return render_template('recognize.html',title='recognize')
 
 @app.route('/waveforms/<filename>')
 def waveforms(filename):

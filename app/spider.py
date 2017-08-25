@@ -36,7 +36,7 @@ def mp3_to_wav(data_path):
 
 if __name__ == "__main__":
 
-    data_path = u'/srv/flask/qiuqiuqiu/app/data/珍珠鸡/'
+    data_path = u'/srv/flask/BirdSong_Recognition/app/data/珍珠鸡/'
     url = 'http://sound.niaolei.org.cn/Numida-meleagris.html'
 
     #DownloadMP3(data_path)

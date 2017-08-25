@@ -2,8 +2,6 @@
 import os
 import numpy as np
 from hmmlearn import hmm
-from preproc import Proc
-from sklearn.externals import joblib
 
 # Class to handle all HMM related processing
 class HMMTrainer(object):

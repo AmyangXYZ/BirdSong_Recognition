@@ -99,7 +99,7 @@ class SigProc():
         plt.title('MFCC')
         plt.tight_layout()
         img = 'waveforms/{}.jpg'.format(int(time.time()))
-        plt.savefig('/srv/flask/qiuqiuqiu/app/'+img)
+        plt.savefig('/srv/flask/BirdSong_Recognition/app/'+img)
         plt.close()
         return img
 

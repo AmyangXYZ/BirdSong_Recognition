@@ -1,6 +1,7 @@
 #coding=utf-8
 from HMM import *
 from sigproc import SigProc
+from sklearn.externals import joblib
 
 def train_wavs(data_folder,birds=None):
     hmm_models = []
@@ -49,7 +50,7 @@ def train_wavs(data_folder,birds=None):
 def predict(filename):
     # Load Models
     hmm_models = []
-    data_folder = '/srv/flask/qiuqiuqiu/app/data/'
+    data_folder = '/srv/flask/BirdSong_Recognition/app/data/'
     for dirname in os.listdir(data_folder):
         # Get the name of the subfolder
         subfolder = os.path.join(data_folder, dirname)
@@ -79,5 +80,5 @@ def predict(filename):
     return output_label
 
 if __name__ == "__main__":
-    train_wavs('/srv/flask/qiuqiuqiu/app/data/',birds=[u'珍珠鸡'])
-    #print predict('/srv/flask/qiuqiuqiu/app/uploads/bugu.wav')
+    train_wavs('/srv/flask/BirdSong_Recognition/app/data/',birds=[u'珍珠鸡'])
+    #print predict('/srv/flask/BirdSong_Recognition/app/uploads/bugu.wav')
