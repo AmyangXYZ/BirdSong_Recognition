@@ -10,7 +10,6 @@ def train_wavs(data_folder,birds=None):
         birds = os.listdir(data_folder)
     for dirname in birds:
         # Get the name of the subfolder
-        print dirname
         subfolder = os.path.join(data_folder, dirname)
         if not os.path.isdir(subfolder):
             continue
@@ -23,12 +22,14 @@ def train_wavs(data_folder,birds=None):
         y_words = []
 
         # Iterate through the audio files (leaving 1 file for testing in each class)
-        for filename in [x for x in os.listdir(subfolder) if x.endswith('.wav')][:-1]:
+        for filename in sorted([x for x in os.listdir(subfolder) if x.endswith('.wav')][:-1]):
             # Extract Feature
             print '[*] '+filename
             filepath = os.path.join(subfolder,filename)
-            mfcc_features = SigProc(filepath).MFCC().T
-
+            try:
+                mfcc_features = SigProc(filepath).MFCC().T
+            except:
+                pass
             # Append to the variable X
             if len(X) == 0:
                 X = mfcc_features
@@ -47,7 +48,7 @@ def train_wavs(data_folder,birds=None):
         hmm_trainer = None
     return 0
 
-def predict(filename):
+def recognize(filename):
     # Load Models
     hmm_models = []
     data_folder = '/srv/flask/BirdSong_Recognition/app/data/'
@@ -78,7 +79,6 @@ def predict(filename):
             output_label = label
 
     return output_label
-
 if __name__ == "__main__":
-    train_wavs('/srv/flask/BirdSong_Recognition/app/data/',birds=[u'珍珠鸡'])
-    #print predict('/srv/flask/BirdSong_Recognition/app/uploads/bugu.wav')
+    #train_wavs('/srv/flask/BirdSong_Recognition/app/data/',birds=[u'八哥'])
+    print recognize('/srv/flask/BirdSong_Recognition/app/uploads/4.wav')
