@@ -1,3 +1,3 @@
 # BirdSongs
-### A Web Application for Identify Bird Songs
+### A Web Application for Identifying Bird Songs
 ### Not Finished yet
