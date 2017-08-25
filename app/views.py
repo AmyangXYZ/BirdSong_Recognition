@@ -1,5 +1,5 @@
 import sys, os
-
+from pydub import AudioSegment
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
 from sigproc import SigProc
@@ -34,6 +34,14 @@ def recognize():
         file = request.files['file']
         if file :
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
+
+            # convert to wav
+            if file.filename.split('.')[-1] != 'wav':
+                sound = AudioSegment.from_file(os.path.join(app.config['UPLOAD_FOLDER']+file.filename))
+                os.remove(app.config['UPLOAD_FOLDER']+file.filename)
+                file.filename = file.filename.replace(file.filename.split('.')[-1],'wav')
+                sound.export(app.config['UPLOAD_FOLDER']+file.filename, format="wav")
+
             file_url = url_for('uploaded_file', filename=file.filename)
             audio_name = app.config['UPLOAD_FOLDER'] + file.filename
             sig = SigProc(audio_name)
