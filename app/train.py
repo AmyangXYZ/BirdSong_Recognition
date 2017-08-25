@@ -3,12 +3,10 @@ from HMM import *
 from sigproc import SigProc
 from sklearn.externals import joblib
 
-def train_wavs(data_folder,birds=None):
+def train_wavs(data_folder):
     hmm_models = []
-    # Parse the input directory
-    if not birds:
-        birds = os.listdir(data_folder)
-    for dirname in birds:
+
+    for dirname in data_folder:
         # Get the name of the subfolder
         subfolder = os.path.join(data_folder, dirname)
         if not os.path.isdir(subfolder):
@@ -77,8 +75,9 @@ def recognize(filename):
         if score > max_score:
             max_score = score
             output_label = label
-
     return output_label
+
 if __name__ == "__main__":
-    #train_wavs('/srv/flask/BirdSong_Recognition/app/data/',birds=[u'八哥'])
-    print recognize('/srv/flask/BirdSong_Recognition/app/uploads/4.wav')
+    data_folder = '/srv/flask/BirdSong_Recognition/app/data/'
+    train_wavs(data_folder)
+    #print recognize('/srv/flask/BirdSong_Recognition/app/uploads/4.wav')
