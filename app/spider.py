@@ -38,12 +38,14 @@ def mp3_to_wav(data_path):
 
 if __name__ == "__main__":
     birds = GetBirds()
-    print '[*] birds list:\n\t',
-    for i in birds:
-        print i[1],
+    print '[*] birds list:'
+    for bird, id in zip(birds,range(0,len(birds))):
+        print '\t' + str(id) + ' - ' + bird[1]
     print
-    for url, bird in birds:
+
+    for url, bird in birds[10:]:
         print '[*] downloading {}\'s songs...'.format(bird)
+        print '\t' + url
         data_path = '/srv/flask/BirdSong_Recognition/app/data/' + bird + '/'
         DownloadMP3(data_path)
         mp3_to_wav(data_path)
