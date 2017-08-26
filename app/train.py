@@ -1,17 +1,17 @@
 #coding=utf-8
 from HMM import *
+from tqdm import tqdm
 from sigproc import SigProc
 from sklearn.externals import joblib
 
 def train_wavs(data_folder):
     hmm_models = []
 
-    for dirname in data_folder:
+    for dirname in os.listdir(data_folder):
         # Get the name of the subfolder
         subfolder = os.path.join(data_folder, dirname)
         if not os.path.isdir(subfolder):
             continue
-
         # Extract the label
         label = subfolder[subfolder.rfind('/') + 1:]
         print '[*] '+label
@@ -20,9 +20,8 @@ def train_wavs(data_folder):
         y_words = []
 
         # Iterate through the audio files (leaving 1 file for testing in each class)
-        for filename in sorted([x for x in os.listdir(subfolder) if x.endswith('.wav')][:-1]):
+        for filename in tqdm([x for x in os.listdir(subfolder) if x.endswith('.wav')]):
             # Extract Feature
-            print '[*] '+filename
             filepath = os.path.join(subfolder,filename)
             try:
                 mfcc_features = SigProc(filepath).MFCC().T
@@ -37,7 +36,6 @@ def train_wavs(data_folder):
             # Append the label
             y_words.append(label)
 
-        print 'X.shape =', X.shape
         # Train and save HMM model
         hmm_trainer = HMMTrainer()
         hmm_trainer.train(X)
