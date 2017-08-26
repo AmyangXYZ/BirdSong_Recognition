@@ -1,8 +1,7 @@
 #coding=utf-8
-import requests
-import re
-import os
+import requests, os, sys, re
 from pydub import AudioSegment
+from tqdm import tqdm
 
 def GetBirds():
     url = 'http://sound.niaolei.org.cn/'
@@ -20,10 +19,11 @@ def DownloadMP3(data_path):
         rep1 = requests.get(i)
         mp3.append(re.findall(r'mp3:\"(.*)\"',rep1.content)[0])
 
-    for u, i in zip(mp3,range(len(mp3))):
+
+    for i in tqdm(range(0,len(mp3))):
         with open(data_path+str(i)+'.mp3','wb+') as f:
-            f.write(requests.get(u).content)
-        print '\t\t' + str(i)
+            f.write(requests.get(mp3[i]).content)
+
     return 0
 
 def mp3_to_wav(data_path):
@@ -38,15 +38,14 @@ def mp3_to_wav(data_path):
 
 if __name__ == "__main__":
     birds = GetBirds()
-    print '[*] birds list:'
+    print '[*] birds list:\n\t',
     for bird, id in zip(birds,range(0,len(birds))):
-        print '\t' + str(id) + ' - ' + bird[1]
+        print '{} - {}, '.format(id,bird[1]),
     print
 
-    for url, bird in birds[10:]:
-        print '[*] downloading {}\'s songs...'.format(bird)
-        print '\t' + url
+    for url, bird in birds[11:]:
         data_path = '/srv/flask/BirdSong_Recognition/app/data/' + bird + '/'
+        print '[*] downloading {}\'s songs ({})...'.format(bird,url)
+
         DownloadMP3(data_path)
         mp3_to_wav(data_path)
-
