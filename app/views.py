@@ -50,7 +50,7 @@ def Recognize():
             result = unicode(recognize(audio_name), "utf-8")
             wav = '<audio src="{}" controls="controls"></audio>'.format(file_url)
             return render_template('recognize.html', title='Recognize',**locals())
-    return render_template('recognize.html',title='recognize')
+    return render_template('recognize.html',title='Recognize')
 
 @app.route('/waveforms/<filename>')
 def waveforms(filename):

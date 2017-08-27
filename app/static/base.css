@@ -13,12 +13,17 @@ body {
 }
 
 .header {
+  top:0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  position: fixed;
   text-align:center;
   background: #292929;
   padding:0;
-
 }
 .header ul {
+
   display: inline-block;
   list-style: none;
 }
@@ -27,7 +32,7 @@ body {
   padding:18px;
   padding-left:40px;
   transition: all 0.5s ease;
-  font-size: 20px;
+  font-size: 24px;
   font-weight:500;
   color:white;
 }
@@ -41,16 +46,45 @@ body {
 }
 .header img {
   float:left;
-  width: 90px;
-  height:100px;
+  width: 60px;
+  height:70px;
 }
 .header img:hover{
   -webkit-animation: tada 1s;
   animation: tada 1s;
 }
 
-
 .wrap {
+  width: 85%;
+  margin:10px auto;
+  text-align:center;
+}
 
- text-align: center;
+.show {
+  float: left;
+  margin:0px auto;
+  text-align:center;
+}
+
+.show img{
+
+  border-top: : 2px solid #fff;
+    -webkit-box-shadow: 5px 5px 5px 5px rgba(204,204,204,0.55);
+}
+
+.sidebar {
+
+  float:right;
+}
+.sidebar p{
+  font-size: 24px;
+  font-weight: normal;
+}
+.sidebar p:last-child {
+  margin: 0;
+}
+
+.sidebar img {
+    width: 400px;
+    height: 300px;
 }

@@ -48,6 +48,7 @@ def recognize(filename):
     # Load Models
     hmm_models = []
     data_folder = '/srv/flask/BirdSong_Recognition/app/data/'
+
     for dirname in os.listdir(data_folder):
         # Get the name of the subfolder
         subfolder = os.path.join(data_folder, dirname)
@@ -78,4 +79,16 @@ def recognize(filename):
 if __name__ == "__main__":
     data_folder = '/srv/flask/BirdSong_Recognition/app/data/'
     train_wavs(data_folder)
-    #print recognize('/srv/flask/BirdSong_Recognition/app/uploads/4.wav')
+    for dirname in os.listdir(data_folder):
+        # Get the name of the subfolder
+        subfolder = os.path.join(data_folder, dirname)
+
+        label = subfolder[subfolder.rfind('/') + 1:]
+        print label
+        for filename in sorted([x for x in os.listdir(subfolder) if x.endswith('.wav')]):
+            try:
+                result = recognize(subfolder+'/'+filename)
+                print '\t' + filename + ' ' + result + ' ' + str((result==label))
+            except:
+                print '\t' + filename + ' error'
+                pass

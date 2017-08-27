@@ -5,25 +5,25 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='animate.min.css') }}">
   </head>
 <body>
-<div class="wrap">
+
   <div class="header">
     <ul>
       <img src="/static/logo.png">
       <li>
-        <a href="/">首页<br>Home</a>
+        <a href="/">首页</a>
       </li>
       <li>
-        <a href="/recognize">识别<br>Recognize</a>
+        <a href="/recognize">识别</a>
       </li>
       <li>
-        <a href="/enjoy">欣赏<br>Enjoy</a>
+        <a href="/enjoy">欣赏</a>
       </li>
       <li>
-        <a href="/about">关于<br>About</a>
+        <a href="/about">关于</a>
       </li>
     </ul>
   </div>
-
+<div class="wrap">
  {% block content %}{% endblock %}
 </div>
 </body>

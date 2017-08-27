@@ -83,7 +83,7 @@ class SigProc():
 
     def PlotImg(self):
         plt.style.use('seaborn-darkgrid')
-        plt.rcParams['figure.figsize'] = (8, 6)
+        plt.rcParams['figure.figsize'] = (7, 6)
 
         plt.subplot(311)
         librosa.display.waveplot(self.signal, sr=self.sr)
