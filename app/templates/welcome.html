@@ -1,6 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+    <title>啾啾啾 | {{ title }}</title>
 <link href="{{ url_for('static',filename='base.css') }}" rel="stylesheet">
 <link href="{{ url_for('static',filename='welcome.css') }}" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -11,16 +12,13 @@
     <ul>
       <img src="/static/logo.png">
       <li>
-        <a href="/">首页</a>
+        <a href="/">首页<br>Home</a>
       </li>
       <li>
-        <a href="/recognize">识别</a>
+        <a href="/recognize">识别<br>Recognize</a>
       </li>
       <li>
-        <a href="/enjoy">欣赏</a>
-      </li>
-      <li>
-        <a href="/about">关于</a>
+        <a href="/enjoy">欣赏<br>Enjoy</a>
       </li>
     </ul>
   </div>

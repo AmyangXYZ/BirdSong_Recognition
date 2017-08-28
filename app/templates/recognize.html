@@ -8,7 +8,7 @@
     background-position:center;
     background-repeat:no-repeat;}
 </style>
-<br><br><br>
+
 <font size='6'>请上传录音文件</font>
     <form action="" method=post enctype=multipart/form-data>
         <input type=file name=file>
@@ -16,15 +16,16 @@
     </form><br>
 
 <div class="show">
+    <br><br>
 <img src="{{img}}"><br><br>
 {{wav | safe}}
 </div>
 <br>
 {% if result %}
 <div class="sidebar">
-
+    <br><br>    <br><br>
         <p>经分析，此鸟很有可能是<font size="6"><b>{{result}}</font></p>
-        <br><br>
+
 
 
 </div>
