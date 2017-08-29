@@ -1,6 +1,25 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
+<style>
+    body{background: url('/static/bird5.jpg');
+    background-size:cover;
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;}
+</style>
+<script>$(function(){
+	$(window).scroll(function(){
+          height = $(window).scrollTop();
+   	  	  if(height < 40){
+   	  	  	$('.header').fadeIn();
+   	  	  }else{
+   	  	  	$('.header').fadeOut();
+   	  	  };
+
+});
+});
+</script>
   <div class="box">
   <ul>
        {% for bird in birds %}
@@ -10,7 +29,7 @@
          <p>学名:&nbsp&nbsp{{ bird.sci_name }}</p>
          <a href="/bird/{{ bird.sci_name }}">More</a>
       </div>
-      <img src="/static/birdimg/{{bird.sci_name}}.jpg" >
+      <img src="/birdsfiles/{{bird.sci_name}}.jpg" >
     </li>
     {% endfor %}
   </ul>

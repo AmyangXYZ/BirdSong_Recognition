@@ -3,15 +3,18 @@ import sys, os
 from pydub import AudioSegment
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
+
 from sigproc import SigProc
 sys.path.append('/srv/flask/BirdSong_Recognition/app/')
 from sql import Query
 from train import recognize
 
-
 app.config['UPLOAD_FOLDER'] = '/srv/flask/BirdSong_Recognition/app/uploads/'
 app.config['WaveForms_FOLDER'] = '/srv/flask/BirdSong_Recognition/app/waveforms/'
+app.config['BirdsFiles_FOLDER'] = '/srv/flask/BirdSong_Recognition/app/birdsfiles/'
 app.secret_key = os.urandom(24)
+
+
 
 @app.route('/')
 def welcome():
@@ -59,4 +62,7 @@ def Recognize():
 @app.route('/waveforms/<filename>')
 def waveforms(filename):
     return send_from_directory(app.config['WaveForms_FOLDER'],filename)
+@app.route('/birdsfiles/<filename>')
+def birdsfiles(filename):
+    return send_from_directory(app.config['BirdsFiles_FOLDER'],filename)
 

@@ -19,7 +19,7 @@ body {
   z-index: 99;
   position: fixed;
   text-align:center;
-  background: #292929;
+  background: transparent;
   padding:0;
 }
 .header ul {
@@ -62,24 +62,33 @@ body {
 
 .show {
   float: left;
-  margin:0px auto;
+  margin:40px;
   text-align:center;
 }
 
 .show img{
-  width: 90%;
+  max-width: 630px;
+  max-height: 540px;
   border-top: : 2px solid #fff;
-    -webkit-box-shadow: 5px 5px 5px 5px rgba(204,204,204,0.55);
+    -webkit-box-shadow: 1px 1px 1px 1px rgba(205,205,205,0.55);
 }
 
 .sidebar {
-  margin-right: 10%;
+  margin:40px;
+  width: 550px;
   float:right;
 }
-.sidebar p{
-  font-size: 24px;
+.sidebar h4{
+
+  font-size: 28px;
   font-weight: normal;
 }
+.sidebar p{
+
+  font-size: 16px;
+  font-weight: normal;
+}
+
 .sidebar p:last-child {
   margin: 0;
 }
@@ -127,7 +136,6 @@ body {
     width:180px;
     height:240px;
     background:rgba(0,0,0,0.7);
-
     position:absolute;
     top:-240px;
     -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->

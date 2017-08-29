@@ -9,24 +9,24 @@
     background-repeat:no-repeat;}
 </style>
 
-<font size='4'>请上传录音文件</font>
+<h4>上传录音文件</h4>
 
     <form action="" method=post enctype=multipart/form-data>
         <input type=file name=file>
         <input type=submit value=Upload>
     </form><br>
-Steps:  转换wav格式 --> 读取原始音频 --> 语音增强 --> 提取MFCC系数 --> 喂给HMM识别 --> 计算概率得出结果<br>
-服务器性能有限, 请耐心等待, 上传大小限制10m ：P <br>
+<p>Steps:  转换wav格式 --> 读取原始音频 --> 语音增强 --> 提取MFCC系数 --> 喂给HMM识别 --> 计算概率得出结果<br>
+服务器性能有限, 请耐心等待, 上传大小限制10m ：P <br><p>
 
 <div class="show">
-    <br><br>
+
 <img src="{{img}}"><br><br>
 {{wav | safe}}
 </div>
 <br>
 {% if result %}
 <div class="sidebar">
-    <br><br>    <br><br>
+    <br><br>
     <p>经分析，此鸟很有可能是<font size="6"><b><a href="/bird/{{ bird.sci_name }}">{{result}}</a></font></p>
 
 

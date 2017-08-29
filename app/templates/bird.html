@@ -1,8 +1,25 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
+<style>
+    body{background: url('/static/bird7.jpeg');
+    background-size:cover;
+    background-attachment:fixed;
+    background-position:center;
+    background-repeat:no-repeat;}
+</style>
+<br>
+<div class="show">
 
-    {{ bird.name }}<br>
-    {{ bird.intro }}
+    <img src="/birdsfiles/{{bird.sci_name}}.jpg">
+</div>
+
+<div class="sidebar">
+
+    <h4>{{ bird.name }}</h4><br>
+    <p>{{ bird.intro }}</p>
+    <br><br>
+    <audio src="/birdsfiles/{{bird.sci_name}}.wav" controls="controls"></audio>
+</div>
 
 {% endblock %}
