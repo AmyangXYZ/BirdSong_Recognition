@@ -127,6 +127,7 @@ body {
     width:180px;
     height:240px;
     background:rgba(0,0,0,0.7);
+
     position:absolute;
     top:-240px;
     -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->
@@ -145,11 +146,13 @@ body {
     color:#fff;
     text-align:center;
     padding-top:30px;
+
     }
 .box ul li .deatil p{
     font-size:16px;
     text-align:center;
-    margin:32px;
+    margin:12px;
+    margin-top: 30px;
     color:#fff;
 }
 .box ul li .deatil a{
@@ -164,7 +167,7 @@ body {
 
    text-align:center;
     line-height:35px;
-    margin:0 auto;
+    margin:30 auto;
 }
 .box ul li:hover .deatil{
     top:0;
