@@ -1,5 +1,22 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 {% block content %}
-<font size='6'>enjoy the bird songs</font>
+
+<font size='6'>enjoy the bird songs</font><br>
+  <div class="box">
+
+
+  <ul>
+       {% for bird in birds %}
+    <li>
+      <div class="deatil">
+         <h2>{{ bird.name }}</h2>
+         <p>学名:&nbsp&nbsp{{ bird.sci_name }}</p>
+         <a href="/bird/{{ bird.sci_name }}">More</a>
+      </div>
+      <img src="/static/birdimg/1.jpe" >
+    </li>
+    {% endfor %}
+  </ul>
+  </div>
 {% endblock %}

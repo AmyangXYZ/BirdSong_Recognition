@@ -1,10 +1,11 @@
+#coding=utf-8
 import sys, os
 from pydub import AudioSegment
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
 from sigproc import SigProc
 sys.path.append('/srv/flask/BirdSong_Recognition/app/')
-
+from sql import Query
 from train import recognize
 
 
@@ -18,11 +19,13 @@ def welcome():
 
 @app.route('/enjoy')
 def enjoy():
-    return render_template('enjoy.html',title='Enjoy')
+    birds = Query.query_all()
+    return render_template('enjoy.html',title='Enjoy',**locals())
 
-@app.route('/about')
-def about():
-    return render_template('about.html',title='Enjoy')
+@app.route('/bird/<birdname>')
+def bird(birdname):
+    bird = Query.query_bird_sciname(birdname)
+    return render_template('bird.html',title=birdname,bird=bird)
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
@@ -49,6 +52,7 @@ def Recognize():
             img = sig.PlotImg()
             result = unicode(recognize(audio_name), "utf-8")
             wav = '<audio src="{}" controls="controls"></audio>'.format(file_url)
+            bird = Query.query_bird_name(result)
             return render_template('recognize.html', title='Recognize',**locals())
     return render_template('recognize.html',title='Recognize')
 

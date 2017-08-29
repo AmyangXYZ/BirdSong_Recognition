@@ -88,3 +88,84 @@ body {
     width: 400px;
     height: 300px;
 }
+
+.box{
+    width:1000px;
+    background:#fff;
+    margin:30px auto;
+
+}
+.box .head span{
+    font-size:18px;
+    color:#333;
+}
+.box .head{
+    margin-bottom:20px;
+}
+.box .head a{
+    text-decoration:none;
+    float:right;
+    font-size:15px;
+    color:#333;
+}
+.box .head a:hover{
+    color:#F00;
+}
+
+.box ul li{
+
+    width:180px;
+    height:240px;
+    list-style:none;
+    position:relative;
+    float:left;
+    margin-left:20px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+.box ul li .deatil{
+    width:180px;
+    height:240px;
+    background:rgba(0,0,0,0.7);
+    position:absolute;
+    top:-240px;
+    -webkit-transition:all 0.3s ease;<!--适应ie，谷歌，苹果浏览器内核-->
+    -o-transition:all 0.3s ease;<!--适应Opera浏览器内核-->
+    -moz-transition:all 0.3s ease;<!--火狐浏览器-->
+    -ms-transition:all 0.3s ease;<!--微软-->
+}
+
+.box img{
+  width:180px;
+  height: 240px;
+}
+.box ul li .deatil h2{
+    font-size:24px;
+    font-weight: 500;
+    color:#fff;
+    text-align:center;
+    padding-top:30px;
+    }
+.box ul li .deatil p{
+    font-size:16px;
+    text-align:center;
+    margin:32px;
+    color:#fff;
+}
+.box ul li .deatil a{
+    font-size:16px;
+    font-weight: 600;
+    display:inline-grid;
+    color:#fff;
+    background-color:#F00;
+    text-decoration:none;
+    width:100px;
+
+
+   text-align:center;
+    line-height:35px;
+    margin:0 auto;
+}
+.box ul li:hover .deatil{
+    top:0;
+}

@@ -9,7 +9,7 @@
     background-repeat:no-repeat;}
 </style>
 
-<font size='6'>请上传录音文件</font>
+<font size='4'>请上传录音文件</font>
     <form action="" method=post enctype=multipart/form-data>
         <input type=file name=file>
         <input type=submit value=Upload>
@@ -24,7 +24,7 @@
 {% if result %}
 <div class="sidebar">
     <br><br>    <br><br>
-        <p>经分析，此鸟很有可能是<font size="6"><b>{{result}}</font></p>
+    <p>经分析，此鸟很有可能是<font size="6"><b><a href="/bird/{{ bird.sci_name }}">{{result}}</a></font></p>
 
 
 
