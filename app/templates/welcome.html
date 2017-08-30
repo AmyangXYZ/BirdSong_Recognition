@@ -6,10 +6,29 @@
 <link href="{{ url_for('static',filename='welcome.css') }}" rel="stylesheet">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="{{ url_for('static',filename='slide.js') }}"></script>
+    <script src="{{ url_for('static',filename='lazyload.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static',filename='animate.min.css') }}">
 </head>
 <body>
 <div  class="header">
+    <script type="text/javascript">
+$(function() {
+$("img").lazyload({
+effect : "fadeIn"
+});
+});
+</script>
+    <script>$(function(){
+	$(window).scroll(function(){
+          height = $(window).scrollTop();
+   	  	  if(height > 40){
+   	  	  	$('.header').fadeIn();
+   	  	  }else{
+   	  	  	$('.header').fadeOut();
+   	  	  };
+});
+});
+</script>
     <ul>
       <img src="/static/logo.png">
       <li>
