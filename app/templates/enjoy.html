@@ -8,7 +8,17 @@
     background-position:center;
     background-repeat:no-repeat;}
 </style>
-
+<script>$(function(){
+	$(window).scroll(function(){
+          height = $(window).scrollTop();
+   	  	  if(height < 80){
+   	  	  	$('.header').fadeIn();
+   	  	  }else{
+   	  	  	$('.header').fadeOut();
+   	  	  };
+});
+});
+</script>
   <div class="box">
   <ul>
        {% for bird in birds %}
