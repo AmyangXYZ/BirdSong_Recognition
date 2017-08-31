@@ -70,7 +70,7 @@ body {
   max-width: 630px;
   max-height: 540px;
   border-top: : 2px solid #fff;
-    -webkit-box-shadow: 1px 1px 1px 1px rgba(205,205,205,0.55);
+    -webkit-box-shadow: 0 0 12px 1px rgba(87,87,87,0.2);
 }
 
 .sidebar {
