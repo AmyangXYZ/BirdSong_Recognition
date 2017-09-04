@@ -8,15 +8,24 @@
     background-position:center;
     background-repeat:no-repeat;}
 </style>
-
-<h4>上传录音文件</h4>
-
+<br>
     <form action="" method=post enctype=multipart/form-data>
-        <input type=file name=file>
-        <input type=submit value=Upload>
-    </form><br>
-<p>Steps:  转换wav格式 --> 读取原始音频 --> 语音增强 --> 提取MFCC系数 --> 喂给HMM识别 --> 计算概率得出结果<br>
-服务器性能有限, 请耐心等待, 上传大小限制10m ：P <br><p>
+       <input type=file class="upload-file" name=file hidden>
+	<img id="up" src="/static/up.png" onclick="F_Open_dialog()">
+    </form>
+
+<script>
+	function F_Open_dialog() 
+       {
+	$(".upload-file").click();  
+       } 
+
+	$('.upload-file').on('change', function(){
+	    $(this).closest('form').submit();
+	});
+	$('form').submit( function(){
+	});
+</script>
 
 <div class="show">
 
@@ -27,8 +36,14 @@
 {% if result %}
 <div class="sidebar">
     <br><br>
-    <p>经分析，此鸟很有可能是<font size="6"><b><a href="/bird/{{ bird.sci_name }}">{{result}}</a></font></p>
-
+    <p>经分析，此鸟很有可能是<font size="6"><b><a href="/bird/{{ bird.sci_name }}">{{result}}</a></font></p><br><hr><br>
+	<h5>耗时：</h5>
+<ul>
+<li>	格式转换  --- {{ t3 }}s</li>
+<li>	提取特征  ---  {{ t0 }}s	</li>
+<li>	数据绘制 ---  {{ t1 }}s </li>
+<li>	概率计算 ---  {{ t2 }}s</li>
+</ul>	
 
 
 </div>

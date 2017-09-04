@@ -7,6 +7,11 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
+hr {
+  background:#000;
+  border:0;
+  height:1px;
+}
 
 .header {
   top:0;
@@ -54,7 +59,6 @@ body {
   margin:10px auto;
   text-align:center;
 }
-
 .show {
   float: left;
   margin:40px;
@@ -73,14 +77,14 @@ body {
   width: 450px;
   float:right;
 }
-.sidebar h4{
-
+.sidebar h5{
+  text-align: left;
   font-size: 28px;
   font-weight: normal;
 }
 .sidebar p{
-
-  font-size: 16px;
+  text-align: left;
+  font-size: 20px;
   font-weight: normal;
 }
 
@@ -88,9 +92,10 @@ body {
   margin: 0;
 }
 
-.sidebar img {
-    width: 400px;
-    height: 300px;
+.sidebar ul {
+  list-style: none;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .box{
@@ -175,4 +180,8 @@ body {
 .box ul li:hover .deatil{
     top:0;
 }
+
+
+
+
 
