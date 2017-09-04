@@ -4,7 +4,7 @@ from pydub import AudioSegment
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
 
-from sigproc import SigProc
+from sigproc import *
 sys.path.append('/srv/flask/BirdSong_Recognition/app/')
 from sql import Query
 from train import recognize
@@ -47,13 +47,13 @@ def Recognize():
                 os.remove(app.config['UPLOAD_FOLDER']+file.filename)
                 file.filename = file.filename.replace(file.filename.split('.')[-1],'wav')
                 sound.export(app.config['UPLOAD_FOLDER']+file.filename, format="wav")
-
             file_url = url_for('uploaded_file', filename=file.filename)
             audio_name = app.config['UPLOAD_FOLDER'] + file.filename
-            print audio_name
+
             sig = SigProc(audio_name)
-            img = sig.PlotImg()
-            result = unicode(recognize(audio_name), "utf-8")
+            img = PlotImg(sig.signal, sig.sr, sig.logMMSE, sig.MFCCs)
+
+            result = unicode(recognize(sig.MFCCs), "utf-8")
             wav = '<audio src="{}" controls="controls"></audio>'.format(file_url)
             bird = Query.query_bird_name(result)
             return render_template('recognize.html', title='Recognize',**locals())
@@ -65,4 +65,5 @@ def waveforms(filename):
 @app.route('/birdsfiles/<filename>')
 def birdsfiles(filename):
     return send_from_directory(app.config['BirdsFiles_FOLDER'],filename)
+
 

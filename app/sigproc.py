@@ -11,8 +11,11 @@ class SigProc():
     def __init__(self,filename):
         self.filename = filename
         self.signal, self.sr = librosa.load(filename)
+        self.logMMSE = self.LogMMSE()
+        self.MFCCs = self.MFCC()
 
-    def logMMSE(self):
+    def LogMMSE(self):
+        print 1
         x = self.signal
         Slen = int(np.floor(0.02 * self.sr)) - 1
         noise_frames = 6
@@ -79,30 +82,29 @@ class SigProc():
             return x
 
     def MFCC(self):
-        MFCC = librosa.feature.mfcc(y=self.logMMSE(), sr=self.sr, n_mfcc=40)
+        MFCC = librosa.feature.mfcc(y=self.logMMSE, sr=self.sr, n_mfcc=40)
         return MFCC
 
+def PlotImg(signal,sr,logMMSE,MFCCs):
+    plt.style.use('seaborn-darkgrid')
+    plt.rcParams['figure.figsize'] = (7, 6)
 
-    def PlotImg(self):
-        plt.style.use('seaborn-darkgrid')
-        plt.rcParams['figure.figsize'] = (7, 6)
+    plt.subplot(311)
+    librosa.display.waveplot(signal, sr=sr)
+    plt.title('Raw Wave')
 
-        plt.subplot(311)
-        librosa.display.waveplot(self.signal, sr=self.sr)
-        plt.title('Raw Wave')
+    plt.subplot(312)
+    librosa.display.waveplot(logMMSE, sr=sr)
+    plt.title('MMSE-LSA')
 
-        plt.subplot(312)
-        librosa.display.waveplot(self.logMMSE(), sr=self.sr)
-        plt.title('MMSE-LSA')
-
-        plt.subplot(313)
-        librosa.display.specshow(self.MFCC(), x_axis='time')
-        plt.colorbar()
-        plt.title('MFCC')
-        plt.tight_layout()
-        img = 'waveforms/{}.jpg'.format(int(time.time()))
-        plt.savefig('/srv/flask/BirdSong_Recognition/app/'+img)
-        plt.close()
-        return img
+    plt.subplot(313)
+    librosa.display.specshow(MFCCs, x_axis='time')
+    plt.colorbar()
+    plt.title('MFCC')
+    plt.tight_layout()
+    img = 'waveforms/{}.jpg'.format(int(time.time()))
+    plt.savefig('/srv/flask/BirdSong_Recognition/app/'+img)
+    plt.close()
+    return img
 
 
