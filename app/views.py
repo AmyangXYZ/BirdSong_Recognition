@@ -3,6 +3,7 @@ import sys, os
 from pydub import AudioSegment
 from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
 from app import app
+import time
 
 from sigproc import *
 sys.path.append('/srv/flask/BirdSong_Recognition/app/')
@@ -40,20 +41,30 @@ def Recognize():
         file = request.files['file']
         if file :
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],file.filename))
-
+	    t3 = '0.0000'
             # convert to wav
             if file.filename.split('.')[-1] != 'wav':
-                sound = AudioSegment.from_file(os.path.join(app.config['UPLOAD_FOLDER']+file.filename))
+                bt3 = time.time()
+		sound = AudioSegment.from_file(os.path.join(app.config['UPLOAD_FOLDER']+file.filename))
                 os.remove(app.config['UPLOAD_FOLDER']+file.filename)
                 file.filename = file.filename.replace(file.filename.split('.')[-1],'wav')
                 sound.export(app.config['UPLOAD_FOLDER']+file.filename, format="wav")
+		et3 = time.time()
+		t3 = '%.4f'%(et3 - bt3)
             file_url = url_for('uploaded_file', filename=file.filename)
             audio_name = app.config['UPLOAD_FOLDER'] + file.filename
-
+	    bt0 = time.time()
             sig = SigProc(audio_name)
+	    et0 = time.time()
+	    t0 = '%.4f'%(et0 - bt0)
+	    bt1 = time.time()
             img = PlotImg(sig.signal, sig.sr, sig.logMMSE, sig.MFCCs)
-
+  	    et1 = time.time()
+	    t1 = '%.4f'%(et1 - bt1)
+	    bt2 = time.time()
             result = unicode(recognize(sig.MFCCs), "utf-8")
+            et2 = time.time()
+	    t2 = '%.4f'%(et2 - bt2)
             wav = '<audio src="{}" controls="controls"></audio>'.format(file_url)
             bird = Query.query_bird_name(result)
             return render_template('recognize.html', title='Recognize',**locals())
