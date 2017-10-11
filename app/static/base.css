@@ -73,9 +73,17 @@ hr {
 }
 
 .sidebar {
-  margin:40px;
+  margin-right: 50px;
+  margin-top: 40px;
+  padding:25px;
   width: 450px;
   float:right;
+      -webkit-box-shadow: 0 0 12px 1px rgba(87,87,87,0.2);
+}
+.sidebar h4{
+  font-size: 32px;
+  font-weight: normal;
+
 }
 .sidebar h5{
   text-align: left;
@@ -83,6 +91,7 @@ hr {
   font-weight: normal;
 }
 .sidebar p{
+
   text-align: left;
   font-size: 20px;
   font-weight: normal;
