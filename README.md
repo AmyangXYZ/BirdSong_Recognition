@@ -7,7 +7,7 @@ Our school is at the foot of the mountain, every day the school is filled with b
 It has 22 kinds of bird now, 
 the correct rate is: 81.8% (with only 1.7G data trained).
 
-#### Steps:
+### Steps:
 +    Building Hidden Markov Models
 +    Building recognizer
 +    Deploy on the server
