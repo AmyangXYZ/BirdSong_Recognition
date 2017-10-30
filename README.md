@@ -1,6 +1,6 @@
 # BirdSong Recognition
 
-#### A mini Flask Web Application for Birdsong Recognition.
+### A mini Flask Web Application for Birdsong Recognition.
 
 Our school is at the foot of the mountain, every day the school is filled with beautiful birdsong, but we do not know their names. So we have an idea of making a birdsong recognition application.
 
@@ -17,6 +17,6 @@ the correct rate is: 81.8% (with only 1.7G data trained).
 +    MFCCs extraction
 +    Predict
 
-#### Requirements
+### Requirements
     `hmmlearn, sklearn, scipy, matplotlib, pydub, flask, flask-script`    
 
