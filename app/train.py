@@ -67,7 +67,7 @@ def recognize(mfcc_features):
     # Define variables
     max_score = -100000.0
     output_label = None
-    
+
     # Iterate through all HMM models and pick
     # the one with the highest score
     for item in hmm_models:
@@ -82,18 +82,18 @@ def recognize(mfcc_features):
 if __name__ == "__main__":
     data_folder = '/home/amyang/Projects/BirdSong_Recognition/app/data'
     train_wavs(data_folder)
-#    test_set = train_wavs(data_folder)
-    for dirname in os.listdir(data_folder):
-        # Get the name of the subfolder
-        subfolder = os.path.join(data_folder, dirname)
+# #    test_set = train_wavs(data_folder)
+#     for dirname in os.listdir(data_folder):
+#         # Get the name of the subfolder
+#         subfolder = os.path.join(data_folder, dirname)
 
-        label = subfolder[subfolder.rfind('/') + 1:]
-        print(label)
-        for filename in ([x for x in os.listdir(subfolder) if x.endswith('.wav')][-2:]):
-            # try:
-            result = recognize(subfolder+'/'+filename)
-            print('\t' + filename + ' ' + result + ' ' + str((result==label)))
-            # except:
-            #     print('\t' + filename + ' error')
-            #     pass
+#         label = subfolder[subfolder.rfind('/') + 1:]
+#         print(label)
+#         for filename in ([x for x in os.listdir(subfolder) if x.endswith('.wav')][-2:]):
+#             # try:
+#             result = recognize(subfolder+'/'+filename)
+#             print('\t' + filename + ' ' + result + ' ' + str((result==label)))
+#             # except:
+#             #     print('\t' + filename + ' error')
+#             #     pass
 
