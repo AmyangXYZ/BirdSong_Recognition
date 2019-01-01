@@ -102,6 +102,6 @@ def PlotImg(signal,sr,logMMSE,MFCCs):
     plt.title('MFCC')
     plt.tight_layout()
     img = 'waveforms/{}.png'.format(int(time.time()))
-    plt.savefig('/home/amyang/Projects/BirdSong_Recognition/app/'+img)
+    plt.savefig('/root/BirdSong_Recognition/app/'+img)
     plt.close()
     return img

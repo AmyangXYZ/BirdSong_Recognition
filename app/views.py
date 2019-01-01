@@ -5,16 +5,16 @@ from flask import render_template, url_for,request,redirect,session,flash,send_f
 from app import app
 import time
 
-sys.path.append('/home/amyang/Projects/BirdSong_Recognition/app/')
+sys.path.append('/root/BirdSong_Recognition/app/')
 
 from sigproc import *
 
 from sql import Query
 from train import recognize
 
-app.config['UPLOAD_FOLDER'] = '/home/amyang/Projects/BirdSong_Recognition/app/uploads/'
-app.config['WaveForms_FOLDER'] = '/home/amyang/Projects/BirdSong_Recognition/app/waveforms/'
-app.config['BirdsFiles_FOLDER'] = '/home/amyang/Projects/BirdSong_Recognition/app/birdsfiles/'
+app.config['UPLOAD_FOLDER'] = '/root/BirdSong_Recognition/app/uploads/'
+app.config['WaveForms_FOLDER'] = '/root/BirdSong_Recognition/app/waveforms/'
+app.config['BirdsFiles_FOLDER'] = '/root/BirdSong_Recognition/app/birdsfiles/'
 app.secret_key = os.urandom(24)
 
 
