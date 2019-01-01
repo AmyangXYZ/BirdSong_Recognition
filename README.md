@@ -20,7 +20,7 @@ pydub, librosa, hmmlearn, tqdm, sklearn, matplotlib...
   
 ## Note:
 
-Due to my careless, some path values are set in many files, please just use some cmd to replace them, e.g. 
+Due to my careless, path values are set in many files, please just use some cmd to replace them, e.g. 
 ```bash
 sed -i "s/\/home\/amyang\/Projects/\/root/g" `grep /home/amyang/Projects -rl ./*`
 ```
