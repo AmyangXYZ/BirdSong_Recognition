@@ -15,7 +15,6 @@ class SigProc():
         self.MFCCs = self.MFCC()
 
     def LogMMSE(self):
-        print 1
         x = self.signal
         Slen = int(np.floor(0.02 * self.sr)) - 1
         noise_frames = 6
@@ -102,9 +101,7 @@ def PlotImg(signal,sr,logMMSE,MFCCs):
     plt.colorbar()
     plt.title('MFCC')
     plt.tight_layout()
-    img = 'waveforms/{}.jpg'.format(int(time.time()))
-    plt.savefig('/srv/flask/BirdSong_Recognition/app/'+img)
+    img = 'waveforms/{}.png'.format(int(time.time()))
+    plt.savefig('/home/amyang/Projects/BirdSong_Recognition/app/'+img)
     plt.close()
     return img
-
-

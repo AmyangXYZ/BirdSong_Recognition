@@ -30,14 +30,15 @@
 <div class="show">
 
 <img src="{{img}}"><br><br>
-{{wav | safe}}
+{{wav_raw | safe}}<br>
+
 </div>
 <br>
 {% if result %}
 <div class="sidebar">
 
     <h4>此鸟很有可能是 -- <b><a href="/bird/{{ bird.sci_name }}">{{result}}</a></b></h4><hr>
-	<h5>耗时：</h5>
+	<h5>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp耗时：</h5>
 <ul>
 <li>	格式转换  --- {{ t3 }}s</li>
 <li>	提取特征  ---  {{ t0 }}s	</li>

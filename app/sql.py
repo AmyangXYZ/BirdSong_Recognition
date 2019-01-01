@@ -4,9 +4,9 @@ import sqlite3
 class Query(object):
     def __init__(self, id, name, sci_name, intro, song):
         self.id = id
-        self.name = name.decode('utf-8')
-        self.sci_name = sci_name.decode('utf-8')
-        self.intro = intro.decode('utf-8')
+        self.name = name
+        self.sci_name = sci_name
+        self.intro = intro
         self.song = song
 
     def insert(self):
@@ -26,7 +26,7 @@ class Query(object):
 
     @staticmethod
     def query_all():
-        conn = sqlite3.connect("/srv/flask/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/home/amyang/Projects/BirdSong_Recognition/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
         c.execute('select * from Birds_Intro')
@@ -41,7 +41,7 @@ class Query(object):
 
     @staticmethod
     def query_bird_sciname(sci_name):
-        conn = sqlite3.connect("/srv/flask/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/home/amyang/Projects/BirdSong_Recognition/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
         c.execute('select * from Birds_Intro where sci_name=?', (sci_name,))
@@ -53,10 +53,10 @@ class Query(object):
 
     @staticmethod
     def query_bird_name(name):
-        conn = sqlite3.connect("/srv/flask/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/home/amyang/Projects/BirdSong_Recognition/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
-        c.execute('select * from Birds_Intro where name=?', (name,))
+        c.execute('select * from Birds_Intro where name=?', [name])
         r = c.fetchone()
         bird = Query(r[0], r[1], r[2], r[3], r[4])
         conn.commit()
@@ -64,11 +64,11 @@ class Query(object):
         return bird
 
 if __name__ == '__main__':
-    name = u'麻雀'
+    name = '麻雀'
     sci_name = ''
     intro = ''
     song = ''
     #Query(1, name, sci_name, intro, song).insert()
-    birds = Query.query_all()
+    birds = Query.query_bird_name(name)
     for bird in birds:
-        print bird.name
+        print(bird.name)
