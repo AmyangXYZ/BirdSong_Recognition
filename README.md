@@ -1,28 +1,17 @@
 # BirdSong Recognition
 
-## A Flask Web Application for Birdsong Recognition.
-
 Our school is at the foot of the mountain, every day the school is filled with beautiful birdsong, but we do not know their names. So we have an idea of making a birdsong recognition application.
 
-It has 22 kinds of bird now,
-the correct rate is: 81.8% (with only 1.7G data trained).
+It has 22 kinds of bird now, the correct rate is 81.8% (with only 1.7G data trained).
 
-## Steps:
+Acutally it is a isolate-word recognition problem, so We use the classic HMM+MFCC method.
 
-+   Load & Preprocess audio
-+   Etract MFCCs Feature
-+   Build & Train Model
-+   Deploy on the server
+## Installation
 
-## Requirements
+`git clone https://github.com/AmyangXYZ/BirdSong_Recognition`
 
-pydub, librosa, hmmlearn, tqdm, sklearn, matplotlib...
-  
-## Note:
+`cd BirdSong_Recognition/`
 
-Due to my careless, path values are set in many files, please just use some cmd to replace them, e.g. 
-```bash
-sed -i "s/\/home\/amyang\/Projects/\/root/g" `grep /home/amyang/Projects -rl ./*`
-```
+`docker build -t birdsong .`
 
-(here `root` is the new path)
+`docker run -d --name docker_birdsong -p 80:80 birdsong`
