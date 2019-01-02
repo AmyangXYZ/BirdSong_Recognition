@@ -65,7 +65,7 @@ def recognize(mfcc_features):
 
 
     # Define variables
-    max_score = -100000.0
+    max_score = -10000000000000.0
     output_label = None
 
     # Iterate through all HMM models and pick
