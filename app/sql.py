@@ -26,7 +26,7 @@ class Query(object):
 
     @staticmethod
     def query_all():
-        conn = sqlite3.connect("/root/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
         c.execute('select * from Birds_Intro')
@@ -41,7 +41,7 @@ class Query(object):
 
     @staticmethod
     def query_bird_sciname(sci_name):
-        conn = sqlite3.connect("/root/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
         c.execute('select * from Birds_Intro where sci_name=?', (sci_name,))
@@ -53,7 +53,7 @@ class Query(object):
 
     @staticmethod
     def query_bird_name(name):
-        conn = sqlite3.connect("/root/BirdSong_Recognition/app/intro.db")
+        conn = sqlite3.connect("/app/intro.db")
         conn.text_factory = str
         c = conn.cursor()
         c.execute('select * from Birds_Intro where name=?', [name])

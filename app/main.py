@@ -1,15 +1,15 @@
 #coding=utf-8
 import sys, os
 from pydub import AudioSegment
-from flask import render_template, url_for,request,redirect,session,flash,send_from_directory
+from flask import Flask, render_template, url_for,request,redirect,session,flash,send_from_directory
 import time
 
-sys.path.append('/app/')
+sys.path.append('/app/app/')
 
 from sigproc import *
-from app import app
 from sql import Query
 from train import recognize
+app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = '/app/uploads/'
 app.config['WaveForms_FOLDER'] = '/app/waveforms/'
@@ -86,3 +86,6 @@ def waveforms(filename):
 def birdsfiles(filename):
     return send_from_directory(app.config['BirdsFiles_FOLDER'],filename)
 
+if __name__ == "__main__":
+    # Only for debugging while developing
+    app.run(host='0.0.0.0', debug=True, port=80)

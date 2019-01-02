@@ -52,7 +52,7 @@ def recognize(mfcc_features):
     # Load Models
     hmm_models = []
 
-    data_folder = '/root/BirdSong_Recognition/app/data'
+    data_folder = '/app/data'
     for dirname in os.listdir(data_folder):
         # Get the name of the subfolder
         subfolder = os.path.join(data_folder, dirname)
@@ -80,7 +80,7 @@ def recognize(mfcc_features):
     return output_label
 
 if __name__ == "__main__":
-    data_folder = '/root/BirdSong_Recognition/app/data'
+    data_folder = '/app/data'
     train_wavs(data_folder)
 # #    test_set = train_wavs(data_folder)
 #     for dirname in os.listdir(data_folder):
