@@ -15,3 +15,9 @@ Acutally it is a isolate-word recognition problem, so We use the classic HMM+MFC
 `docker build -t birdsong .`
 
 `docker run -d --name docker_birdsong -p 80:80 birdsong`
+
+## Environment
+
+Python3.7
+
+Libraries: tqdm, wheel, pydub, hmmlearn, librosa, sklearn, matplotlib, scipy
